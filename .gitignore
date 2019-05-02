@@ -1,6 +1,7 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+# npm- amd js dev-tasks related
+.sass-cache
+node_modules
+npm-debug.log
+/.node-version
+/appserver/java-spring/.java-version
+/appserver/java-spring/out
