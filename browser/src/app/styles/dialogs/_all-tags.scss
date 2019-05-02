@@ -1,0 +1,165 @@
+/* 
+ * Copyright 2012-2015 MarkLogic Corporation 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *    http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License. 
+ */ 
+
+.ss-dialog-all-tags {
+
+  .ss-column {
+    width: 185px;
+  }
+
+  .ss-column ul {
+    margin:0;
+    padding:0;
+    list-style: none;
+  }
+
+  .ss-column li.checkbox {
+    margin-top: 0;
+  }
+
+  .ss-column label {
+    font-size: 12px;
+  }
+
+  .ss-paging {
+    float: left;
+  }
+
+  .ss-submit {
+    float: right;
+  }
+
+  .tags-modal-clear-icon .glyphicon-remove {
+    cursor: pointer;
+  }
+
+  ul.dropdown-menu {
+    left: 24px!important;
+  }
+
+  .modal-browser {
+    padding:10px 10px 0 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .modal-browser ul.nav-tabs {
+    border-bottom: none;
+  }
+
+  .modal-browser ul.nav-tabs li {
+    float: right;
+  }
+
+  .modal-browser ul.nav-tabs li a {
+    padding: 6px 14px;
+  }
+
+  .modal-body table tr td.checkbox {
+    position: static;
+    display: table-cell;
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .modal-body table tr td.checkbox input {
+    top: 0px;
+    margin-right: 5px;
+    position: relative;
+  }
+
+
+  #searchTags {
+    height: 26px;
+    float:left;
+    width:50%;
+    padding:2px 5px 2px 24px;
+    padding-left: 24px!important;
+    background:url("/images/glyphicons_027_search.png") no-repeat 2% 49.5%;
+    background-size:13px 13px;
+    background-repeat:no-repeat;
+  }
+
+  .modal-footer {
+    text-align: left;
+  }
+
+  .modal-footer ul.pagination {
+    margin: 0;
+
+  }
+
+  ul.pagination.missing-count li {
+    &:last-of-type {
+      display: none;
+    }
+  }
+
+  .modal-footer ul.pagination li a {
+    padding: 4px 8px;
+  }
+
+  input[type="checkbox"] {
+    margin-top: 1px;
+  }
+
+  .tags-modal-search-wrapper {
+     float:left;
+     width: 60%;
+     margin-left: 5px;
+  }
+
+  .tags-modal-search-wrapper .tags-modal-search {
+    border:1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .tags-modal-search-wrapper .tags-modal-search-icon {
+    float:left;
+    margin:3px 0px 0px 6px;
+  }
+
+  .tags-modal-search-wrapper .tags-modal-search-input {
+    float:left;
+    padding-top:1px;
+    width: 80%;
+  }
+
+  .tags-modal-search-wrapper .tags-modal-search-input input {
+    border: none;
+    box-shadow: inset 0 0px 0px, 0 0 0px;
+    /* border: 1px solid red!important; */
+    margin-left: 0;
+    margin-top: 1px;
+    margin-bottom: 0px;
+    width: 100%;
+    height: 25px;
+    padding: 2px 10px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .tags-modal-search-wrapper .glyphicon-search {
+    margin-top:2px;
+  }
+
+  .tags-modal-search-wrapper .glyphicon-remove {
+    margin-top:6px;
+    margin-right: 12px;
+    color:#ccc;
+    float:right;
+  }
+
+}

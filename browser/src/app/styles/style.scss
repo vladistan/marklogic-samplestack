@@ -1,0 +1,104 @@
+/* 
+ * Copyright 2012-2015 MarkLogic Corporation 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *    http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License. 
+ */ 
+
+@import 'base';
+@import 'states/all';
+@import 'dialogs/all';
+@import 'directives/all';
+
+.spinner {
+  background-image: url('/app/images/spinner.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+
+.loading {
+  visibility: hidden;
+}
+
+.disabled {
+  color: #bbb;
+}
+
+.ss-no-backend {
+  background-color: #a52a2a;
+}
+
+.ss-backend-incomplete {
+  background-color: #ffd1d1;
+}
+
+.ss-incomplete {
+  background-color: #ffd;
+}
+
+.ss-ui-incomplete {
+  background-color: #ffd;
+}
+
+.ss-incomplete-message {
+  max-width: $view-max-width;
+  position: absolute;
+  text-align: center;
+}
+
+.has-error {
+  border: 1px solid #f00;
+  padding: 5px;
+}
+
+.ss-global-error {
+  font-size: 8pt;
+  margin-bottom: -($navbar-height);
+  margin-top: $navbar-height;
+
+  pre {
+    font-size: 8pt;
+  }
+}
+
+p.has-error {
+  color: #f00;
+  font-weight: bold;
+}
+
+.ml-edit-tools {
+  background-color: #ddd;
+  margin-top: 10px;
+  padding: 5px;
+  width: 400px;
+}
+
+.ss-divider {
+  background-color: #000;
+  height: 1px;
+  margin: 5px 0;
+  width: 205px;
+}
+
+.ss-typeahead-item {
+  cursor: pointer;
+}
+
+.ss-column {
+  float: left;
+  position: relative;
+}

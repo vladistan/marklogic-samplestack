@@ -1,0 +1,23 @@
+  this.Then(
+    /filter criteria are set to their default values/,
+    function(next) {
+      expect(this.currentPage.filterCriteria)
+        .to.eventually.have.deep.property(
+          'model.filterCriteria.status', 'TODO'
+        )
+        .and.notify(next);
+    }
+  );
+
+module.exports = function () {
+  this.World = World;
+
+  this.Then(
+    /^the text search criteria are empty$/,
+    function (next) {
+      this.currentPage.queryText
+        .should.eventually.equal('')
+        .and.notify(next);
+    }
+  );
+};

@@ -1,0 +1,247 @@
+/* 
+ * Copyright 2012-2015 MarkLogic Corporation 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *    http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License. 
+ */ 
+
+.ss-qnadoc {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  h1 {
+    font-size: 36px;
+  }
+}
+
+/* voting */
+.ss-vote-wrapper {
+  padding-top:8px;
+}
+
+.ss-vote-module {
+
+  .ss-vote-control {
+    text-align:center;
+    margin:0;
+    padding:0;
+  }
+
+  .ss-votes-total {
+    font-size:20px;
+    line-height: 20px;
+    text-align:center;
+    margin:0;
+    padding: 0 0 5px 0;
+    font-weight: 600;
+  }
+
+  .ss-vote-up-off,
+  .ss-vote-down-off,
+  .ss-voted-up,
+  .ss-voted-down,
+  .ss-vote-up,
+  .ss-vote-down {
+    display:inline-block;
+    margin:0;
+    padding:0;
+    font-size: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  .ss-vote-up-off {
+    border-width: 0 16.5px 16px 16.5px;
+    border-color: transparent transparent #CCC transparent;
+    cursor: auto;
+  }
+
+  .ss-vote-down-off {
+    border-width: 16px 16.5px 0 16.5px;
+    border-color: #CCC transparent transparent transparent;
+    cursor: auto;
+  }
+
+  .ss-voted-up {
+    border-width: 0 16.5px 16px 16.5px;
+    border-color: transparent transparent #3abc9a transparent;
+    cursor: auto;
+  }
+
+  .ss-voted-down {
+    border-width: 16px 16.5px 0 16.5px;
+    border-color: #3abc9a transparent transparent transparent;
+    cursor: auto;
+  }
+
+  .ss-vote-up {
+    border-width: 0 16.5px 16px 16.5px;
+    border-color: transparent transparent #428bca transparent;
+    cursor: pointer;
+  }
+
+  .ss-vote-down {
+    border-width: 16px 16.5px 0 16.5px;
+    border-color: #428bca transparent transparent transparent;
+    cursor: pointer;
+  }
+
+  .ss-vote-up:hover {
+    border-color: transparent transparent #3071a9 transparent;
+  }
+
+  .ss-vote-down:hover {
+    border-color: #3071a9 transparent transparent transparent;
+  }
+
+  .ss-accept {
+    margin-top:10px;
+  }
+
+  .ss-accept .ss-accepted {
+    font-size:30px;
+    color:#3abc9a;
+  }
+
+  .ss-accept .ss-unaccepted {
+    font-size:30px;
+    color:#777;
+  }
+
+  .ss-accept .ss-unaccepted .glyphicon-ok-circle {
+    cursor: pointer;
+  }
+
+}
+
+/* question */
+.ss-question-module-wrapper,
+.ss-question-module-inner {
+  padding-bottom: 10px;
+}
+
+/* outbound link */
+.ss-question-stackoverflow {
+  float:right;
+
+  a span {
+    top:7px;
+  }
+}
+
+.ss-qnadoc-header {
+  font-weight:bold;
+  float:left;
+  font-size:15px;
+  padding-top:8px;
+}
+
+.ss-answers-header,
+.ss-your-answer-header {
+  border-bottom:1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* comments */
+.ss-question-module-comment {
+
+  border-top: 1px dotted #ddd;
+  padding-top: 7px;
+  padding-left: 14px;
+  padding-right: 0;
+
+  p {
+    padding-bottom: 3px;
+  }
+
+  textarea {
+    margin-bottom:14px;
+  }
+
+  p, textarea, textarea.form-control {
+    font-size: 12px!important;
+    margin-bottom: 10px;
+  }
+
+}
+
+/* answers */
+.ss-answer-wrapper {
+
+  padding-top: 14px;
+
+  /* push answer anchors up to account for fixed navbar */
+  .ss-answer-anchor {
+    position: relative;
+    top: -1 * ($navbar-height + 20);
+  }
+
+  .ss-answer-vote {
+    padding-top:6px;
+  }
+
+  .ss-answer-inner {
+    padding-top:22px;
+    border-bottom:1px solid #ddd;
+  }
+
+  .ss-answer-inner,
+  .ss-answer-user-info {
+    padding-bottom: 14px;
+  }
+
+  hr {
+    margin: 0;
+  }
+
+}
+
+.ss-answer-divider {
+  margin-left: 35px;
+  margin-right: 35px;
+
+  hr {
+    border-color:#ebebeb;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* comments */
+.ss-comment {
+  border-bottom: dotted 1px #ddd;
+  font-size: smaller;
+  padding-bottom: 5px;
+  margin-bottom: 7px;
+}
+
+.ss-add-comment {
+
+  div:first-child {
+    margin: 8px 0 8px 2px;
+  }
+
+  textarea {
+    margin-bottom: 10px;
+  }
+
+}
+
+/* answer form */
+.ss-answer-form {
+
+  .ss-answer-message-guest {
+    padding-top: 14px;
+    margin-left: 120px;
+  }
+
+}

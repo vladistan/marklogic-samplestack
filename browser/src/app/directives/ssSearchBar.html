@@ -1,0 +1,147 @@
+<!-- 
+ * Copyright 2012-2015 MarkLogic Corporation 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *    http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License. 
+ --> 
+
+<div class="search-wrapper container-fluid">
+
+  <!-- search tips button -->
+  <div class="search-tips-wrapper">
+    <button
+      type="button"
+      class="search-tips btn btn-primary btn-lg"
+      title="View tips for constructing advanced search EXPS"
+      ng-click="showTips=!showTips"
+    >
+      <i class="icon-pointer-down" ng-if="!showTips"></i>
+      <i class="icon-pointer-up" ng-if="showTips"></i>
+      <span class="visible-md-inline visible-lg-inline">Search Tips</span>
+    </button>
+  </div>
+
+  <!-- search input box and buttons -->
+  <div class="search-inner clearfix">
+    <div class="search-input-wrapper">
+      <!-- search submit button -->
+      <button
+        class="ss-search-submit search-button btn btn-primary btn-lg"
+        type="button"
+        ng-click="setQueryText()"
+      >
+        <span class="glyphicon glyphicon-search"></span><span class="visible-md-inline visible-lg-inline">Search</span>
+      </button>
+      <!-- search clear button -->
+      <div
+        class="search-clear"
+        ng-show="searchbarText"
+      >
+        <span
+          class="glyphicon glyphicon-remove"
+          ng-click="clearSearch()"
+        ></span>
+      </div>
+      <input
+        class="search-input form-control input-lg"
+        type="search"
+        ng-model="searchbarText"
+        placeholder="Search the Stack!..."
+        title="Enter search terms and advanced search expressions. (See Search Tips for help.)"
+        value=""
+        ng-keyup="$event.keyCode == 13 && setQueryText()"
+      >
+    </div>
+  </div>
+</div>
+
+<!-- search tips box -->
+<div class="tips-box container-fluid" ng-show="showTips">
+  <div class="row">
+    <div class="col col-sm-4">
+      <div class="row">
+        <label class="col-xs-6 text-right">tags:</label>
+        <div class="col-xs-6 sample">
+          <p>tag:tag1</p>
+          <p>tag:tag1 OR tag:tag2</p>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-xs-6 text-right">strings:</label>
+        <div class="col-xs-6 sample">
+          <p>aString</p>
+          <p>string1 AND string2</p>
+          <p>"a phrase"</p>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-xs-6 text-right">wildcard string:</label>
+        <div class="col-xs-6 sample">
+          <p>aString*</p>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-xs-6 text-right">title:</label>
+        <div class="col-xs-6 sample">
+          <p>title:aString</p>
+        </div>
+      </div>
+    </div>
+    <div class="col col-sm-4">
+      <div class="row">
+        <div class="row">
+          <label class="col-xs-6 text-right">user:</label>
+          <div class="col-xs-6 sample">
+            <p>user:JoeUser&nbsp;&nbsp;&nbsp;[for any submission]</p>
+            <p>askedBy:JoeUser</p>
+            <p>answeredBy:JoeUser</p>
+            <p>commentedBy:JoeUser</p>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-xs-6 text-right">date:</label>
+          <div class="col-xs-6 sample">
+            <p>date:2014-07-30</p>
+            <p>date GE 2014-07-30&nbsp;&nbsp;&nbsp;[on or after Jul. 30 2014]</p>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-xs-6 text-right">votes:</label>
+          <div class="col-xs-6 sample">
+            <p>votes:0</p>
+            <p>votes GT 100&nbsp;&nbsp;&nbsp;[more than 100 votes]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-sm-4">
+      <div class="row">
+        <div class="row">
+          <label class="col-xs-6 text-right">question status:</label>
+          <div class="col-xs-6 sample">
+            <p>resolved:false</p>
+            <p>answers LE 2&nbsp;&nbsp;&nbsp;[2 or fewer answers]</p>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-xs-6 text-right">operators:</label>
+          <div class="col-xs-6 sample">
+            <p>query1 AND query2&nbsp;&nbsp;&nbsp;[implicit for adjacent terms]</p>
+            <p>query1 OR query2</p>
+            <p>-query&nbsp;&nbsp;&nbsp;[negation]</p>
+            <p>(query1 OR query2) AND query3&nbsp;&nbsp;&nbsp;[grouping]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

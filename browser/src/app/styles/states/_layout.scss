@@ -1,0 +1,193 @@
+/* 
+ * Copyright 2012-2015 MarkLogic Corporation 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *    http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License. 
+ */ 
+
+.ss-page-header {
+
+  .navbar-fixed-top {
+    z-index:300;
+  }
+
+  nav {
+    background:#292929!important;
+    -webkit-border-radius:0px!important;
+    -moz-border-radius:0px!important;
+    border-radius:0px!important;
+    border: 1px none red!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    margin-bottom: 0!important;
+
+  }
+
+  /** samplestack logo **/
+  .ss-app-title {
+    color:#fff!important;
+    padding:11px 13px;
+  }
+
+  .ss-app-title img {
+    width:185px;
+  }
+
+  nav ul.nav li button.btn {
+    margin-top: 9px;
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  nav ul.nav li a.inactive {
+    color:#5d5d5d;
+    background: #2d2d2d;
+  }
+
+  nav ul.nav li a.inactive:hover {
+    color:#5d5d5d;
+    background: #2d2d2d;
+  }
+
+  nav ul.nav span.glyphicon {
+    padding:3px;
+    margin-right: 2px;
+  }
+
+  /** login button **/
+  .ss-login {
+    display: block;
+    padding-top:4px;
+  }
+
+  .ss-login button.btn {
+    padding:3px 20px
+  }
+
+  .ss-login a.btn {
+    color:#fff!important;
+    display: block;
+    padding:3px 20px;
+  }
+
+  .ss-login a.btn:hover {
+    background-color: #3071a9;
+    border-color: #285e8e;
+  }
+
+  /** ask question button **/
+  nav ul.nav li.ss-ask-button a.active {
+    color:#fff;
+    background: none;
+  }
+
+  .ss-ask-button a.active:hover {
+    color:#fff;
+    background: #333!important;
+  }
+
+  .ss-ask-button a.inactive:hover {
+    cursor: default;
+  }
+
+  .ss-ask-button span.glyphicon {
+    color:#3abc9a;
+    font-size: 16px;
+    margin-top: -2px;
+  }
+
+  .ss-ask-button a.inactive span.glyphicon {
+    color:#5D5D5D;
+  }
+
+  .ss-ask-button a.active:hover {
+    color:#fff;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+  }
+
+  @media (max-width: 768px) {
+
+    nav ul.nav li.ss-login {
+      background: none!important;
+      border:1px none red!important;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul.nav li.ss-ask-button a {
+      background: none!important;
+    }
+
+    nav ul.nav li a.btn {
+      background: none!important;
+      border:1px none red!important;
+      text-align: left;
+      color:#ccc;
+
+    }
+
+    nav ul.nav li a.btn:hover {
+      background: #333!important;
+      border:1px none red!important;
+      text-align: left;
+      color:#ccc;
+    }
+
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+      border-color: #595959;
+    }
+
+  }
+
+}
+
+.ss-page-footer {
+  border-top:1px solid #ddd;
+  padding:10px 10px 10px 10px;
+  clear: both;
+  p {
+    font-size: 10px;
+    color: #666;
+  }
+}
+
+/* 404 page unavailable */
+
+  .msg-404-wrapper {
+    height: 686px;
+    position: relative;
+  }
+
+  .msg-404-inner {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  .msg-404-center {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform:    translateY(-50%);
+    -ms-transform:     translateY(-50%);
+    -o-transform:      translateY(-50%);
+    transform:         translateY(-50%);
+  }
+
+  .msg-404-center p {
+    font-weight: 100;
+    font-size:35px;
+    color:#333333;
+    line-height:38px;
+  }

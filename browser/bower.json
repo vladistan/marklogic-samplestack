@@ -1,0 +1,110 @@
+{
+  "name": "marklogic-samplestack",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "clockworked247/bootstrap-bower#43c2759a3127a7b75732728e8d027ca348d06af2",
+    "angular-cookies": "1.3.8",
+    "angular-marked": "0.0.12",
+    "angular-mocks": "1.3.8",
+    "angular-sanitize": "1.3.8",
+    "angular-ui-router.stateHelper": "1.2.1",
+    "angular-ui-router": "0.2.13",
+    "angular": "1.3.8",
+    "bootstrap-sass": "3.3.3",
+    "es5-shim": "4.1.0",
+    "highcharts-ng": "0.0.7",
+    "highcharts": "4.0.4",
+    "highlightjs": "8.4.0",
+    "jquery": "2.1.3",
+    "lodash": "2.4.1",
+    "marked": "0.3.3",
+    "modernizr": "2.8.3",
+    "momentjs": "2.9.0",
+    "ng-tags-input": "wooldridge/ngTagsInput-bower#bb0e439000983363a17256862b5ae763ef6b5000",
+    "requirejs-plugins": "1.0.3",
+    "requirejs": "2.1.15",
+    "stacktrace-js": "0.6.4",
+    "jstzdetect": "1.0.6"
+  },
+  "devDependencies": {
+    "chai-as-promised": "4.1.1",
+    "chai": "1.10.0",
+    "mocha": "2.1.0",
+    "sinon-browser-only": "1.12.1",
+    "sinon-chai": "2.6.0",
+    "moment": "2.9.0"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": [
+        "modernizr.js"
+      ]
+    },
+    "es5-shim": {
+      "main": [
+        "es5-shim.js"
+      ]
+    },
+    "marked": {
+      "main": [
+        "lib/marked.js"
+      ]
+    },
+    "ngMarkdown": {
+      "main": [
+        "wizMarkdown/wizMarkdown.js"
+      ]
+    },
+    "mocha": {
+      "main": [
+        "mocha.js",
+        "mocha.css"
+      ]
+    },
+    "chai-as-promised": {
+      "main": [
+        "lib/chai-as-promised.js"
+      ]
+    },
+    "sinon-chai": {
+      "main": [
+        "lib/sinon-chai.js"
+      ]
+    },
+    "highlightjs": {
+      "main": [
+        "highlight.pack.js",
+        "styles/github.css"
+      ]
+    },
+    "jstzdetect": {
+      "main": [
+        "jstz.js",
+        "jstz.min.js"
+      ]
+    },
+    "ng-tags-input": {
+      "main": [
+        "ng-tags-input.js",
+        "ng-tags-input.css",
+        "ng-tags-input.min.js",
+        "ng-tags-input.min.css"
+      ]
+    },
+    "stacktrace-js": {
+      "main": [
+        "dist/stacktrace.js"
+      ]
+    }
+  },
+  "resolutions" : {
+    "angular" : "1.3.8"
+  }
+}
