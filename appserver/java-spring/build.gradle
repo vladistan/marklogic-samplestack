@@ -1,0 +1,193 @@
+/*
+ * Samplestack gradle build file
+ */
+
+configurations.all {
+  resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+/* spring boot build dependency */
+buildscript {
+	ext {
+		springBootVersion = '1.2.1.RELEASE'
+	}
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+/* plugins */
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+group = samplestackGroup
+version = samplestackVersion
+sourceCompatibility = samplestackSourceCompatibility
+
+/*
+ * INIT
+ * Run this task to initialize a fresh MarkLogic server
+ * and install security objects.
+ */
+task dbInit(type: MarkLogicInitTask)
+dbInit.roles = file("../../database/security/roles")
+dbInit.users = file("../../database/security/users")
+
+/*
+ * TEARDOWN
+ * This task removes all trace of samplestack
+ */
+task dbTeardown(type: MarkLogicTeardownTask)
+
+/*
+ * CONFIGURE
+ *
+ * This task configures the database and REST API instance
+ * based on files in the database directory
+ */
+task dbConfigure(type: MarkLogicConfigureTask)
+
+task dbConfigureClean << {
+    delete("${buildDir}/database")
+}
+
+
+dbConfigure.inputDir = file('../../database')
+dbConfigure.outputDir = file("${buildDir}/database")
+dbConfigure.inputProperty = project.properties['taskInputProperty'] ?: "original"
+dbConfigure.shouldRunAfter dbInit
+dbConfigure.shouldRunAfter dbConfigureClean
+dbInit.dependsOn(dbConfigureClean)
+
+task dbConfigureAll
+dbConfigureAll.dependsOn dbConfigureClean
+dbConfigureAll.dependsOn dbConfigure
+
+/**
+ * ASSEMBLE
+ */
+assemble.dependsOn(dbInit, dbConfigure, test)
+
+/**
+ * FETCH SEED DATA
+ */
+task seedDataFetch(type: MarkLogicFetchTask) {
+    url = project.hasProperty("seedDataUrl") ? project.seedDataUrl : "http://developer.marklogic.com/media/gh/seed-data1.8.2.tgz"
+    destFile = file("${buildDir}/seed.tgz")
+}
+seedDataFetch.dependsOn(processResources)
+
+task seedDataExtract {
+    ext.destDir = file("${buildDir}/seed-data")
+    ext.srcFile = file("${buildDir}/seed.tgz")
+    inputs.file srcFile
+    outputs.dir destDir
+    doLast {
+        destDir.mkdirs()
+        copy {
+            from tarTree(resources.gzip(srcFile))
+                into destDir
+        }
+    }
+}
+seedDataExtract.dependsOn(seedDataFetch)
+
+/*
+ * LOAD
+ */
+task dbLoad(type: MarkLogicSlurpTask) {
+    seedDirectory = file("${buildDir}/seed-data")
+    inputs.dir seedDirectory
+}
+dbLoad.mustRunAfter(assemble)
+dbLoad.dependsOn(seedDataExtract)
+/* never skip dbload if requested */
+dbLoad.outputs.upToDateWhen { false }
+
+/*
+ * CLEAR
+ */
+task dbClear(type: MarkLogicClearTask)
+
+
+/* use same properties for gradle and Java runtime */
+task props(type: Copy) {
+    from('.') {
+        include 'gradle.properties'
+    }
+    into 'src/main/resources'
+}
+
+/*
+ * appserver
+ * assembles the project, loads sample data and starts the appserver on port 8090
+ */
+task appserver <<
+{
+   println "Bootstrapping, seeding and starting Samplestack appserver"
+}
+appserver.dependsOn(clean, assemble, dbLoad, bootRun)
+bootRun.shouldRunAfter(dbLoad)
+
+/* The code repositories to consult for dependencies */
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.3.7"
+    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.security:spring-security-ldap:4.0.0.RC1")
+    compile("org.springframework.security:spring-security-web:4.0.0.RC1")
+    compile("org.springframework.security:spring-security-test:4.0.0.RC1")
+    compile("org.apache.directory.server:apacheds-server-jndi:1.5.5")
+    compile("org.apache.directory.server:apacheds-bootstrap-partition:1.5.5")
+    compile("org.apache.directory.server:apacheds-bootstrap-extract:1.5.5")
+    compile("joda-time:joda-time:2.4")
+    compile('com.marklogic:java-client-api:3.0.1') {
+        exclude(group: 'org.slf4j')
+        exclude(group: 'ch.qos.logback')
+    }
+    testCompile('com.jayway.jsonpath:json-path:1.1.0') {
+        exclude(group: 'org.slf4j')
+    }
+    testCompile('org.skyscreamer:jsonassert:1.2.3')
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+}
+
+task unitTest(type: Test) {
+    useJUnit {
+        includeCategories 'com.marklogic.samplestack.testing.UnitTests'
+    }
+}
+
+test.dependsOn(props, dbConfigure)
+
+task dbTest(type: Test) {
+    useJUnit {
+        includeCategories 'com.marklogic.samplestack.testing.DatabaseExtensionTests'
+    }
+}
+
+task integrationTest(type: Test) {
+    useJUnit {
+        includeCategories 'com.marklogic.samplestack.testing.IntegrationTests'
+    }
+}
+
+/* task to generate the gradle wrapper script */
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}

@@ -1,0 +1,12 @@
+{"search": {
+  "query":
+    {"range-query":
+        {
+            "type":"xs:dateTime",
+            "json-property":"lastActivityDate",
+        	"value":"REPLACE",
+        	"range-operator":"GE"
+    	}
+	}
+  }
+}

@@ -1,0 +1,126 @@
+<div class="ss-dialog-all-tags">
+  <!--
+   * Copyright 2012-2015 MarkLogic Corporation
+   *
+   * Licensed under the Apache License, Version 2.0 (the "License");
+   * you may not use this file except in compliance with the License.
+   * You may obtain a copy of the License at
+   *
+   *    http://www.apache.org/licenses/LICENSE-2.0
+   *
+   * Unless required by applicable law or agreed to in writing, software
+   * distributed under the License is distributed on an "AS IS" BASIS,
+   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   * See the License for the specific language governing permissions and
+   * limitations under the License.
+   -->
+
+  <div class="modal-header">
+
+    <button
+      type="button"
+      class="close"
+      ng-click="cancel()"
+    >
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+
+    <h4 class="modal-title">All Available Tags</h4>
+
+  </div><!-- modal-header -->
+
+  <div class="modal-browser clearfix">
+
+    <div class="tags-modal-search-wrapper clearfix">
+      <div class="tags-modal-search clearfix">
+        <div
+          class="tags-modal-clear-icon"
+          ng-show="selected"
+        >
+          <i
+            class="glyphicon glyphicon-remove"
+            ng-click="clearText()"
+          ></i>
+        </div>
+        <div class="tags-modal-search-icon">
+          <i class="glyphicon glyphicon-search"></i>
+        </div>
+        <div class="tags-modal-search-input">
+          <input
+            type="search"
+            id="tags-modal-search"
+            class="form-control input-sm"
+            ng-model="selected"
+            placeholder="Search Tags"
+            title="Search for an available tag"
+            autocomplete="off"
+            ng-change="tagFilter()"
+          />
+        </div>
+      </div>
+    </div><!-- tags-modal-search-wrapper -->
+
+    <ul class="ss-sort nav nav-tabs" role="tablist">
+      <li
+        ng-repeat="sort in sorts"
+        ng-click="setSort()"
+        ng-class="{
+          'active': sort === selectedSort
+        }"
+        title="{{sort.title}}"
+      >
+        <a href="" role="tab">{{sort.label}}</a>
+      </li>
+    </ul><!-- nav-tabs -->
+
+  </div><!-- modal-browser -->
+
+  <div class="modal-body clearfix">
+
+    <div class="ss-column" ng-repeat="page in pagedTagsByColumn">
+      <ul>
+        <li
+          class="checkbox"
+          ng-repeat="tag in page"
+        >
+          <label title="Constrain results to selected tag">
+            <input
+              type="checkbox"
+              ng-checked="selTags.indexOf(tag.name) > -1"
+              ng-click="onTagClick(tag.name)"
+            />
+            {{tag.name}}
+            <span class="text-muted">({{tag.count}})</span>
+          </label>
+        </li>
+      </ul>
+    </div><!-- ss-column -->
+
+  </div><!-- modal-body -->
+
+  <div class="modal-footer">
+
+    <div class="ss-submit">
+      <button
+        type="button"
+        class="btn btn-primary"
+        ng-click="submit()"
+      >OK</button>
+    </div>
+
+    <!-- paging -->
+    <pagination
+      total-items="tagsCount || asManyAs"
+      items-per-page="pageSize"
+      ng-model="currentPage"
+      ng-change="updatePage(currentPage)"
+      max-size="maxSize"
+      boundary-links="true"
+      rotate="false"
+      ng-class="{ 'missing-count': tagsCount === undefined }"
+    ></pagination>
+
+  </div><!-- modal-footer -->
+
+</div><!--tagsModal -->
