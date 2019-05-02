@@ -1,0 +1,29 @@
+{
+  "role-name": "samplestack-writer",
+  "description": "role for contributing to samplestack corpus",
+  "role": [
+      "rest-writer", "samplestack-guest"
+  ],
+  "permission": [
+    {
+      "role-name": "rest-reader",
+      "capability": "read"
+    },
+    {
+      "role-name": "rest-writer",
+      "capability": "read"
+    },
+    {
+      "role-name": "rest-writer",
+      "capability": "update"
+    }
+  ],
+  "privilege":[
+    {
+        "privilege-name":"unprotected-collections",
+        "action":"http://marklogic.com/xdmp/privileges/unprotected-collections",
+        "kind":"execute"
+    }
+  ]
+}
+

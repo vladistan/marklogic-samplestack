@@ -1,0 +1,30 @@
+{
+  "role-name": "samplestack-guest",
+  "description": "Role for access to limited set of questions and answers, read-only",
+  "role": [
+      "rest-extension-user"
+  ],
+  "permission": [
+    {
+      "role-name": "rest-reader",
+      "capability": "read"
+    }
+  ],
+  "privilege": [
+    {
+        "privilege-name":"xdmp:value",
+        "action":"http://marklogic.com/xdmp/privileges/xdmp-value",
+        "kind":"execute"
+    },
+    {
+        "privilege-name":"rest-reader",
+        "action":"http://marklogic.com/xdmp/privileges/rest-reader",
+        "kind":"execute"
+    },
+    {
+        "privilege-name":"sem:sparql",
+        "action":"http://marklogic.com/xdmp/privileges/sem-sparql",
+        "kind":"execute"
+    }
+  ]
+}
